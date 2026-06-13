@@ -50,23 +50,56 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const tabs = document.querySelectorAll('.tabs li');
-      const tabContents = document.querySelectorAll('.tab-content');
+      // --- Tab Group 1: Scenes ---
+      const sceneTabs = document.querySelectorAll('.tabs.scenes li');
+      const sceneTabContents = document.querySelectorAll('.tab-content.scene-content');
 
-      tabs.forEach(tab => {
+      sceneTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-          // 1. Remove 'is-active' from all tabs
-          tabs.forEach(t => t.classList.remove('is-active'));
-          // 2. Add 'is-active' to clicked tab
+          sceneTabs.forEach(t => t.classList.remove('is-active'));
           tab.classList.add('is-active');
-
-          // 3. Hide all tab content
-          tabContents.forEach(content => content.classList.remove('is-active'));
-          // 4. Show the target content
+          
           const target = tab.dataset.target;
-          document.getElementById(target).classList.add('is-active');
+          
+          sceneTabContents.forEach(content => {
+            if (content.id === target) {
+              content.classList.add('is-active');
+            } else {
+              content.classList.remove('is-active');
+            }
+          });
         });
       });
+
+      // --- Tab Group 2: Modalities ---
+      const modalityTabs = document.querySelectorAll('.tabs.modalities li');
+      const modalityVideos = document.querySelectorAll('.modality-video-content');
+      
+      modalityTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          modalityTabs.forEach(t => t.classList.remove('is-active'));
+          tab.classList.add('is-active');
+          
+          const target = tab.dataset.target;
+
+          modalityVideos.forEach(video => {
+            if (video.id === `video-${target}`) {
+              video.style.display = 'block';
+            } else {
+              video.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Initial display update for scenes
+      if (sceneTabs.length > 0) {
+        sceneTabs[0].click();
+      }
+      // Initial display update for modalities
+      if (modalityTabs.length > 0) {
+        modalityTabs[0].click();
+      }
     });
   </script>
 </head>
@@ -76,35 +109,38 @@
   <section class="hero">
     <div class="hero-body">
       <div class="container is-fullhd">
-        <div class="columns is-centered">
+        <div class="columns is-vcentered">
+          <div class="column is-one-quarter">
+            <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 14-41-02.mp4" type="video/mp4"></video>
+            <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 14-50-54.mp4" type="video/mp4"></video>
+          </div>
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">EgoHTG</h1>
-            <h2 class="subtitle is-2 publication-title">Egocentric Demonstrations for Humanoid Terrain Traversal</h2>
+            <h2 class="subtitle is-2 publication-title">Egocentric 4D Demonstrations of Human Terrain Traversal</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a target="_blank">Alex Brandes<sup></sup></a><sup>1,5</sup>,
+                <a target="_blank">Alex Brandes<sup></sup></a><sup> 5</sup>,
               </span>
-              <span class="author-block">
+              <!-- <span class="author-block">
                 <a target="_blank" href="https://scholar.google.com/citations?user=Ef13BU4AAAAJ&hl=en">Haig Sajelian Conti Georges<sup>*</sup></a><sup>1,7</sup>,
+              </span> -->
+              <span class="author-block">
+                <a target="_blank" href="https://scholar.google.com/citations?user=7ElOFaUAAAAJ&hl=en">Manthan Patel<sup>†</sup></a><sup> 1,5</sup>,
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=Ef13BU4AAAAJ&hl=en">Jonas Frey<sup>†</sup></a><sup>1,6</sup>,
+                <a target="_blank" href="https://scholar.google.com/citations?user=Ef13BU4AAAAJ&hl=en">Jonas Frey<sup>†</sup></a><sup> 1,6</sup>,
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=7ElOFaUAAAAJ&hl=en">Manthan Patel<sup>†</sup></a><sup>1,5</sup>,
-              </span>
-              <br>
-              <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=IYUPj9MAAAAJ&hl=en">Xi Wang<sup>†</sup></a><sup>2,5</sup>,
+                <a target="_blank" href="https://scholar.google.com/citations?user=S2368c0AAAAJ&hl=en">Dominik Hollidt<sup>†</sup></a><sup> 3,5</sup>,
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=S2368c0AAAAJ&hl=en">Dominik Hollidt<sup>†</sup></a><sup>3,5</sup>,
+                <a target="_blank" href="https://scholar.google.com/citations?user=IYUPj9MAAAAJ&hl=en">Xi Wang<sup>†</sup></a><sup> 2,5</sup>,
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=25nKBNAAAAAJ&hl=de">Manuel Kaufmann<sup>†</sup></a><sup>4,5</sup>,
+                <a target="_blank" href="https://scholar.google.com/citations?user=25nKBNAAAAAJ&hl=de">Manuel Kaufmann<sup>†</sup></a><sup> 4,5</sup>,
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=DO3quJYAAAAJ&hl=en">Marco Hutter<sup>†</sup></a><sup>1,5</sup>,
+                <a target="_blank" href="https://scholar.google.com/citations?user=DO3quJYAAAAJ&hl=en">Marco Hutter<sup>†</sup></a><sup> 1,5</sup>,
               </span>
               <!--               
               <span class="author-block">
@@ -116,24 +152,26 @@
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>RSL,</span>
-              <span class="author-block"><sup>2</sup>CVG,</span>
-              <span class="author-block"><sup>3</sup>SIPLab,</span>
-              <span class="author-block"><sup>4</sup>ETH AI Center,</span>
-              <span class="author-block"><sup>5</sup>ETH Zurich</span>
-              <span class="author-block"><sup>6</sup>Stanford | UC Berkeley</span>
-              <span class="author-block"><sup>7</sup>TU Munich</span>
+              <span class="author-block"><sup>1</sup> RSL,</span>
+              <span class="author-block"><sup>2</sup> CVG,</span>
+              <span class="author-block"><sup>3</sup> SIPLab,</span>
+              <span class="author-block"><sup>4</sup> ETH AI Center,</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>5</sup> ETH Zurich</span>
+              <span class="author-block"><sup>6</sup> Stanford | UC Berkeley</span>
+              <!-- <span class="author-block"><sup>7</sup> TU Munich</span> -->
             </div>
 
             <div class="is-size-6" style="margin-top: 0.5rem; font-style: italic;">
-              <sup>*</sup> Support in Data Acquisition and Policy Training <sup>†</sup> Supervision.
+              <sup>†</sup> Supervision <!--<sup>*</sup> Support in Data Acquisition and Policy Training-->
             </div>
 
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- Arxiv Link. -->
                 <span class="link-block">
-                  <a target="_blank" href="https://arxiv.org/abs/2509.26633"
+                  <a target="_blank" href=""
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="ai ai-arxiv"></i>
@@ -143,7 +181,7 @@
                 </span>
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a target="_blank" href="./static/images/paper.pdf"
+                  <a target="_blank" href=""
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -154,7 +192,7 @@
 
               <!-- Video Link. -->
               <span class="link-block">
-                <a target="_blank" href="https://www.youtube.com/watch?v=5ZYFTfGHH8Q"
+                <a target="_blank" href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -165,7 +203,7 @@
 
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a target="_blank" href="https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset"
+                <a target="_blank" href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github-alt"></i>
@@ -176,7 +214,7 @@
 
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/amazon-far/holosoma"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -186,6 +224,10 @@
               </span>
               </div>
             </div>
+          </div>
+          <div class="column is-one-quarter">
+            <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 15-29-19.mp4" type="video/mp4"></video>
+            <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 15-31-01.mp4" type="video/mp4"></video>
           </div>
         </div>
       </div>
@@ -207,7 +249,7 @@
         </div>
       </div>
 
-      <div class="tabs is-centered is-boxed is-medium">
+      <div class="tabs is-centered is-boxed is-medium scenes">
         <ul>
           <li class="is-active" data-target="scene-lab">
             <a>
@@ -236,10 +278,9 @@
         </ul>
       </div>
 
-      <div id="scene-lab" class="tab-content is-active has-text-centered">
-        <img src="https://via.placeholder.com/600x300?text=Lab+Hall+Walking+GIF" class="scene-gif-header" alt="Lab Hall Preview">
-        
-        <h4 class="title is-5">Lab Hall Episodes</h4>
+      <div id="scene-lab" class="tab-content scene-content is-active has-text-centered">
+        <video controls width="100%" class="scene-video"><source src="https://via.placeholder.com/800x450.mp4?text=Lab+Hall+Video" type="video/mp4"></video>
+        <h4 class="title is-5 mt-4">Lab Hall Episodes</h4>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
@@ -268,10 +309,9 @@
         </div>
       </div>
 
-      <div id="scene-gym" class="tab-content has-text-centered">
-        <img src="https://via.placeholder.com/600x300?text=Gym+Hall+Obstacles+GIF" class="scene-gif-header" alt="Gym Hall Preview">
-
-        <h4 class="title is-5">Gym Hall Episodes</h4>
+      <div id="scene-gym" class="tab-content scene-content has-text-centered">
+        <video controls width="100%" class="scene-video"><source src="assets/explorer_scene/gym_hall.mp4" type="video/mp4"></video>
+        <h4 class="title is-5 mt-4">Gym Hall Episodes</h4>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
@@ -300,10 +340,9 @@
         </div>
       </div>
 
-      <div id="scene-skate" class="tab-content has-text-centered">
-        <img src="https://via.placeholder.com/600x300?text=Skatepark+Slopes+GIF" class="scene-gif-header" alt="Skatepark Preview">
-
-        <h4 class="title is-5">Skatepark Episodes</h4>
+      <div id="scene-skate" class="tab-content scene-content has-text-centered">
+        <video controls width="100%" class="scene-video"><source src="https://via.placeholder.com/800x450.mp4?text=Skatepark+Video" type="video/mp4"></video>
+        <h4 class="title is-5 mt-4">Skatepark Episodes</h4>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
@@ -332,10 +371,9 @@
         </div>
       </div>
 
-      <div id="scene-debris" class="tab-content has-text-centered">
-        <img src="https://via.placeholder.com/600x300?text=Debris+Field+GIF" class="scene-gif-header" alt="Debris Field Preview">
-
-        <h4 class="title is-5">Debris Field Episodes</h4>
+      <div id="scene-debris" class="tab-content scene-content has-text-centered">
+        <video controls width="100%" class="scene-video"><source src="https://via.placeholder.com/800x450.mp4?text=Debris+Field+Video" type="video/mp4"></video>
+        <h4 class="title is-5 mt-4">Debris Field Episodes</h4>
         <div class="table-container">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
@@ -363,7 +401,6 @@
           </table>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -371,98 +408,88 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Dataset Contents</h2>
-          <div class="content has-text-justified">
-            <p>
-              Below is the organization of the EgoHTG dataset. Each subset contains egocentric recordings 
-              and retargeted motions for humanoid control. Click the link to view specific subsets on Hugging Face.
-            </p>
-          </div>
+          <h3 class="title is-4">Modalities</h3>
         </div>
       </div>
 
-      <div class="table-container">
-        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-          <thead>
-            <tr class="has-background-grey-lighter">
-              <th class="has-text-centered">Scene</th>
-              <th class="has-text-centered">Preview</th>
-              <th class="has-text-centered">Statistics</th>
-              <th class="has-text-centered">Download</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <tr>
-              <td class="has-text-weight-bold">Flat Ground Walking</td>
-              <td class="has-text-centered">
-                <img src="https://via.placeholder.com/200x120?text=Preview+GIF" class="preview-image" alt="Flat Ground">
-              </td>
-              <td>
-                <span class="tag is-info is-light">50 Episodes</span><br>
-                <span class="is-size-7">2.5 Hours total</span>
-              </td>
-              <td class="has-text-centered">
-                <a href="https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset/tree/main/flat_ground" target="_blank" class="button is-small is-dark is-rounded">
-                  <span class="icon"><i class="fas fa-folder-open"></i></span>
-                  <span>Browse</span>
-                </a>
-              </td>
-            </tr>
+      <div class="tabs is-centered is-boxed is-medium modalities">
+        <ul>
+          <li class="is-active" data-target="all">
+            <a>
+              <span>All</span>
+            </a>
+          </li>
+          <li data-target="ego">
+            <a>
+              <span>Ego</span>
+            </a>
+          </li>
+          <li data-target="exo">
+            <a>
+              <span>Exo</span>
+            </a>
+          </li>
+          <li data-target="fixed">
+            <a>
+              <span>Fixed</span>
+            </a>
+          </li>
+          <li data-target="gt">
+            <a>
+              <span>Ground Truth</span>
+            </a>
+          </li>
+          <li data-target="scene">
+            <a>
+              <span>Scene</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
-            <tr>
-              <td class="has-text-weight-bold">Stair Climbing</td>
-              <td class="has-text-centered">
-                <img src="https://via.placeholder.com/200x120?text=Preview+GIF" class="preview-image" alt="Stairs">
-              </td>
-              <td>
-                <span class="tag is-info is-light">35 Episodes</span><br>
-                <span class="is-size-7">1.2 Hours total</span>
-              </td>
-              <td class="has-text-centered">
-                <a href="https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset/tree/main/stairs" target="_blank" class="button is-small is-dark is-rounded">
-                  <span class="icon"><i class="fas fa-folder-open"></i></span>
-                  <span>Browse</span>
-                </a>
-              </td>
-            </tr>
+      <div id="modality-video-container" class="container">
+        <div id="video-all" class="modality-video-content"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+All" type="video/mp4"></video></div>
+        <div id="video-ego" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Ego" type="video/mp4"></video></div>
+        <div id="video-exo" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Exo" type="video/mp4"></video></div>
+        <div id="video-fixed" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Fixed" type="video/mp4"></video></div>
+        <div id="video-gt" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Ground+Truth" type="video/mp4"></video></div>
+        <div id="video-scene" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Scene" type="video/mp4"></video></div>
+      </div>
+    </div>
+  </section>
 
-            <tr>
-              <td class="has-text-weight-bold">Rough Terrain / Slopes</td>
-              <td class="has-text-centered">
-                <img src="https://via.placeholder.com/200x120?text=Preview+GIF" class="preview-image" alt="Rough Terrain">
-              </td>
-              <td>
-                <span class="tag is-info is-light">40 Episodes</span><br>
-                <span class="is-size-7">1.8 Hours total</span>
-              </td>
-              <td class="has-text-centered">
-                <a href="https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset/tree/main/rough_terrain" target="_blank" class="button is-small is-dark is-rounded">
-                  <span class="icon"><i class="fas fa-folder-open"></i></span>
-                  <span>Browse</span>
-                </a>
-              </td>
-            </tr>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Human2Robot</h2>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Human2Robot+Video+1" type="video/mp4"></video>
+        </div>
+        <div class="column">
+          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Human2Robot+Video+2" type="video/mp4"></video>
+        </div>
+      </div>
+    </div>
+  </section>
 
-             <tr>
-              <td class="has-text-weight-bold">Obstacle Avoidance</td>
-              <td class="has-text-centered">
-                <img src="https://via.placeholder.com/200x120?text=Preview+GIF" class="preview-image" alt="Obstacle Avoidance">
-              </td>
-              <td>
-                <span class="tag is-info is-light">25 Episodes</span><br>
-                <span class="is-size-7">0.9 Hours total</span>
-              </td>
-              <td class="has-text-centered">
-                <a href="https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset/tree/main/obstacles" target="_blank" class="button is-small is-dark is-rounded">
-                  <span class="icon"><i class="fas fa-folder-open"></i></span>
-                  <span>Browse</span>
-                </a>
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Limitations</h2>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+1" type="video/mp4"></video>
+        </div>
+        <div class="column">
+          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+2" type="video/mp4"></video>
+        </div>
       </div>
     </div>
   </section>
