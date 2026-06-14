@@ -83,6 +83,7 @@ body {
 }
 
 .author-block {
+  margin-right: 10px; /* Adjust this value to your liking */
   display: inline-block;
 }
 
