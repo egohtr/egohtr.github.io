@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction">
+  <meta name="description"
+    content="Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EgoHGT</title>
+  <link rel="icon" type="image/x-icon" href="assets/titel/logo.svg">
+  <title>EgoHTR</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -22,29 +25,39 @@
   <style>
     /* Custom CSS for the Tab System */
     .tab-content {
-      display: none; /* Hidden by default */
+      display: none;
+      /* Hidden by default */
       animation: fadeIn 0.5s;
     }
+
     .tab-content.is-active {
-      display: block; /* Show when active */
+      display: block;
+      /* Show when active */
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
-    
+
     /* Center cell content vertically */
-    .table td, .table th {
+    .table td,
+    .table th {
       vertical-align: middle !important;
     }
-    
+
     /* Styling for the Scene GIF header */
     .scene-gif-header {
       width: 100%;
       max-width: 600px;
       border-radius: 10px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   </style>
 
@@ -58,9 +71,9 @@
         tab.addEventListener('click', () => {
           sceneTabs.forEach(t => t.classList.remove('is-active'));
           tab.classList.add('is-active');
-          
+
           const target = tab.dataset.target;
-          
+
           sceneTabContents.forEach(content => {
             if (content.id === target) {
               content.classList.add('is-active');
@@ -74,12 +87,12 @@
       // --- Tab Group 2: Modalities ---
       const modalityTabs = document.querySelectorAll('.tabs.modalities li');
       const modalityVideos = document.querySelectorAll('.modality-video-content');
-      
+
       modalityTabs.forEach(tab => {
         tab.addEventListener('click', () => {
           modalityTabs.forEach(t => t.classList.remove('is-active'));
           tab.classList.add('is-active');
-          
+
           const target = tab.dataset.target;
 
           modalityVideos.forEach(video => {
@@ -88,6 +101,24 @@
             } else {
               video.style.display = 'none';
             }
+          });
+        });
+      });
+
+      // --- Tab Group 0: Top-Level Toggle ---
+      const topTabs = document.querySelectorAll('#top-level-tabs li');
+      const topContents = document.querySelectorAll('.top-level-content');
+
+      topTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Update active tab visual
+          topTabs.forEach(t => t.classList.remove('is-active'));
+          tab.classList.add('is-active');
+
+          // Toggle visibility of main containers
+          const target = tab.dataset.target;
+          topContents.forEach(content => {
+            content.style.display = (content.id === target) ? 'block' : 'none';
           });
         });
       });
@@ -115,69 +146,76 @@
             <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 14-50-54.mp4" type="video/mp4"></video>
           </div> -->
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">EgoHTR</h1>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+              <img src="./assets/titel/logo.svg" alt="Project Logo" style="height: 80px; width: auto;">
+              <h1 class="title is-1 publication-title" style="margin-bottom: 0;">EgoHTR</h1>
+            </div>
+            <!-- <h1 class="title is-1 publication-title">EgoHTR</h1> -->
             <h2 class="subtitle is-2 publication-title">Egocentric 4D Demonstrations of Human Terrain Traversal</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a target="_blank">Alex Brandes<sup></sup></a><sup> 1,5</sup>
+                <a target="_blank">Alex Brandes<sup></sup></a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank">Haig Conti Georges Sajelian</a><sup>1,7</sup>
+                <a target="_blank">Haig Conti Georges Sajelian</a><sup>4</sup>
               </span>
             </div>
 
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=7ElOFaUAAAAJ&hl=en">Manthan Patel</a><sup> 1,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=7ElOFaUAAAAJ&hl=en">Manthan
+                  Patel</a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=S2368c0AAAAJ&hl=en">Dominik Hollidt</a><sup> 2,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=S2368c0AAAAJ&hl=en">Dominik
+                  Hollidt</a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=kw1-DxQAAAAJ&hl=en">Chenhao Li</a><sup> 1,4,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=kw1-DxQAAAAJ&hl=en">Chenhao
+                  Li</a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://mheyrman.github.io">Matthias Heyrman</a><sup> 1,5</sup>
+                <a target="_blank" href="https://mheyrman.github.io">Matthias Heyrman</a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=-NHoohwAAAAJ&hl=de">Oliver Hausdörfer</a><sup> 4,7</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=-NHoohwAAAAJ&hl=de">Oliver
+                  Hausdörfer</a><sup> 4</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=25nKBNAAAAAJ&hl=de">Manuel Kaufmann</a><sup> 4,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=25nKBNAAAAAJ&hl=de">Manuel
+                  Kaufmann</a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=IYUPj9MAAAAJ&hl=en">Xi Wang</a><sup> 2,5</sup>
-              </span>
-            </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=Ef13BU4AAAAJ&hl=en">Jonas Frey</a><sup> 1,6</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=IYUPj9MAAAAJ&hl=en">Xi Wang</a><sup>
+                  1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=QMfeRz0AAAAJ&hl=en">Angela P. Schoellig</a><sup> 4,7</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=Ef13BU4AAAAJ&hl=en">Jonas
+                  Frey</a><sup> 2,3</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=OfXP9jMAAAAJ&hl=en">Christian Holz</a><sup> 3,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=QMfeRz0AAAAJ&hl=en">Angela P.
+                  Schoellig</a><sup> 4</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=YYH0BjEAAAAJ&hl=en">Marc Pollefeys</a><sup> 2,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=OfXP9jMAAAAJ&hl=en">Christian
+                  Holz</a><sup> 1</sup>
               </span>
               <span class="author-block">
-                <a target="_blank" href="https://scholar.google.com/citations?user=DO3quJYAAAAJ&hl=en">Marco Hutter</a><sup> 1,5</sup>
+                <a target="_blank" href="https://scholar.google.com/citations?user=YYH0BjEAAAAJ&hl=en">Marc
+                  Pollefeys</a><sup> 1</sup>
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://scholar.google.com/citations?user=DO3quJYAAAAJ&hl=en">Marco
+                  Hutter</a><sup> 1</sup>
               </span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup> RSL,</span>
-              <span class="author-block"><sup>2</sup> CVG,</span>
-              <span class="author-block"><sup>3</sup> SIPLab,</span>
-              <span class="author-block"><sup>4</sup> ETH AI Center,</span>
-              <span class="author-block"><sup>4</sup> LSY,</span>
-            </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>5</sup> ETH Zurich,</span>
-              <span class="author-block"><sup>6</sup> Stanford | UC Berkeley,</span>
-              <span class="author-block"><sup>7</sup> TU Munich</span>
+              <span class="author-block"><sup>1</sup> ETH Zurich</span>
+              <span class="author-block"><sup>2</sup> Stanford</span>
+              <span class="author-block"><sup>3</sup> UC Berkeley</span>
+              <span class="author-block"><sup>4</sup> TU Munich</span>
             </div>
 
             <!-- <div class="is-size-6" style="margin-top: 0.5rem; font-style: italic;">
@@ -188,57 +226,53 @@
               <div class="publication-links">
                 <!-- Arxiv Link. -->
                 <span class="link-block">
-                  <a target="_blank" href=""
-                     class="external-link button is-normal is-rounded is-dark">
+                  <a target="_blank" href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                        <i class="ai ai-arxiv"></i>
+                      <i class="ai ai-arxiv"></i>
                     </span>
                     <span>arXiv</span>
                   </a>
                 </span>
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a target="_blank" href=""
-                     class="external-link button is-normal is-rounded is-dark">
+                  <a target="_blank" href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
+                      <i class="fas fa-file-pdf"></i>
                     </span>
                     <span>Paper</span>
                   </a>
                 </span>
 
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a target="_blank" href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a target="_blank" href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
+                    </span>
+                    <span>Video (coming soon)</span>
+                  </a>
+                </span>
 
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a target="_blank" href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a target="_blank" href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="fab fa-github-alt"></i>
-                  </span>
-                  <span>Dataset</span>
+                    </span>
+                    <span>Dataset (coming soon)</span>
                   </a>
-              </span>
+                </span>
 
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/leggedrobotics/human_terrain_generation"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
+                    </span>
+                    <span>Code (coming soon)</span>
                   </a>
-              </span>
+                </span>
               </div>
             </div>
           </div>
@@ -246,30 +280,36 @@
       </div>
     </div>
   </section>
-  
-  <section class="section">
+
+  <section class="section pt-0">
     <div class="container is-max-desktop">
-      <!-- <div class="column is-one-quarter">
-        <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 15-29-19.mp4" type="video/mp4"></video>
-        <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 15-31-01.mp4" type="video/mp4"></video>
-      </div> -->
-      <div class="columns">
-        <div class="column">
-          <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 15-29-19.mp4" type="video/mp4"></video>
-        </div>
-        <div class="column">
-          <video autoplay loop muted playsinline width="100%"><source src="assets/titel/2026-02-24 15-31-01.mp4" type="video/mp4"></video>
-        </div>
+      <div class="column mt-0 mb-3">
+        <video autoplay loop muted playsinline width="100%">
+          <source src="./assets/titel/cover.mp4" type="video/mp4">
+        </video>
       </div>
 
-      
+
 
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Deploying humanoid robots in unstructured terrain remains an open problem. While classic reinforcement learning struggles with the sheer complexity of real-world interactions, more promising methods leveraging human priors remain limited to models lacking contextual awareness. The restricted motion synthesis is a direct consequence of existing dataset pipelines failing to capture human-scene sequences in challenging environments. To bridge this gap between humanoid learning and scene reconstruction, we introduce the Egocentric Human-Terrain Reconstruction (EgoHTR) dataset. We develop and open-source a reconstruction pipeline capturing 55 scene-aligned 4D human motion sequences in diverse, complex environments using a multi-sensor setup of egocentric wearables and a portable 3D scanner. The resulting dataset comprises over 150k frames, which we evaluate against motion-capture ground truth, demonstrating state-of-the-art accuracy and establishing a rigorous benchmark for human motion analysis and synthesis. Further, we leverage this data to train perceptive locomotion policies, demonstrating hardware deployment on a Unitree G1 for reconstructed reference motions. Our pipeline enables community-driven dataset extensions and factors the problem to help researchers build foundational, context-aware robots that reliably traverse uneven terrain.
+              Deploying humanoid robots in unstructured terrain remains an open problem. While classic reinforcement
+              learning struggles with the sheer complexity of real-world interactions, more promising methods leveraging
+              human priors remain limited to models lacking contextual awareness. The restricted motion synthesis is a
+              direct consequence of existing dataset pipelines failing to capture human-scene sequences in challenging
+              environments. To bridge this gap between humanoid learning and scene reconstruction, we introduce the
+              Egocentric Human-Terrain Reconstruction (EgoHTR) dataset. We develop and open-source a reconstruction
+              pipeline capturing 55 scene-aligned 4D human motion sequences in diverse, complex environments using a
+              multi-sensor setup of egocentric wearables and a portable 3D scanner. The resulting dataset comprises over
+              150k frames, which we evaluate against motion-capture ground truth, demonstrating state-of-the-art
+              accuracy and establishing a rigorous benchmark for human motion analysis and synthesis. Further, we
+              leverage this data to train perceptive locomotion policies, demonstrating hardware deployment on a Unitree
+              G1 for reconstructed reference motions. Our pipeline enables community-driven dataset extensions and
+              factors the problem to help researchers build foundational, context-aware robots that reliably traverse
+              uneven terrain.
             </p>
           </div>
         </div>
@@ -288,194 +328,215 @@
         </div>
       </div>
 
-      <div class="tabs is-centered is-boxed is-medium scenes">
-        <ul>
-          <li class="is-active" data-target="scene-lab">
-            <a>
-              <span class="icon is-small"><i class="fas fa-building"></i></span>
-              <span>Lab Hall</span>
-            </a>
-          </li>
-          <li data-target="scene-gym">
-            <a>
-              <span class="icon is-small"><i class="fas fa-dumbbell"></i></span>
-              <span>Gym Hall</span>
-            </a>
-          </li>
-          <li data-target="scene-skate">
-            <a>
-              <span class="icon is-small"><i class="fas fa-skating"></i></span>
-              <span>Skatepark</span>
-            </a>
-          </li>
-          <li data-target="scene-debris">
-            <a>
-              <span class="icon is-small"><i class="fas fa-cubes"></i></span>
-              <span>Debris Field</span>
-            </a>
-          </li>
-        </ul>
-      </div>
 
-      <div id="scene-lab" class="tab-content scene-content is-active has-text-centered">
-        <video controls width="100%" class="scene-video"><source src="https://via.placeholder.com/800x450.mp4?text=Lab+Hall+Video" type="video/mp4"></video>
-        <h4 class="title is-5 mt-4">Lab Hall Episodes</h4>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-            <thead>
-              <tr class="has-background-white-ter">
-                <th>Episode ID</th>
-                <th>Motion Type</th>
-                <th>Duration</th>
-                <th>Download</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>lab_straight_01</strong></td>
-                <td>Straight Walk</td>
-                <td>15.0s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-              <tr>
-                <td><strong>lab_turn_left</strong></td>
-                <td>90&deg; Turn</td>
-                <td>08.5s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div id="scene-gym" class="tab-content scene-content has-text-centered">
-        <video controls width="100%" class="scene-video"><source src="assets/explorer_scene/gym_hall.mp4" type="video/mp4"></video>
-        <h4 class="title is-5 mt-4">Gym Hall Episodes</h4>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-            <thead>
-              <tr class="has-background-white-ter">
-                <th>Episode ID</th>
-                <th>Equipment</th>
-                <th>Duration</th>
-                <th>Download</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>gym_mats_01</strong></td>
-                <td>Soft Mats</td>
-                <td>12.0s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-              <tr>
-                <td><strong>gym_box_jump</strong></td>
-                <td>Box Obstacle</td>
-                <td>05.2s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div id="scene-skate" class="tab-content scene-content has-text-centered">
-        <video controls width="100%" class="scene-video"><source src="https://via.placeholder.com/800x450.mp4?text=Skatepark+Video" type="video/mp4"></video>
-        <h4 class="title is-5 mt-4">Skatepark Episodes</h4>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-            <thead>
-              <tr class="has-background-white-ter">
-                <th>Episode ID</th>
-                <th>Ramp Angle</th>
-                <th>Duration</th>
-                <th>Download</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>skate_ramp_up</strong></td>
-                <td>20&deg; Slope</td>
-                <td>10.5s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-              <tr>
-                <td><strong>skate_bowl_traverse</strong></td>
-                <td>Curved Surface</td>
-                <td>18.0s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div id="scene-debris" class="tab-content scene-content has-text-centered">
-        <video controls width="100%" class="scene-video"><source src="https://via.placeholder.com/800x450.mp4?text=Debris+Field+Video" type="video/mp4"></video>
-        <h4 class="title is-5 mt-4">Debris Field Episodes</h4>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-            <thead>
-              <tr class="has-background-white-ter">
-                <th>Episode ID</th>
-                <th>Density</th>
-                <th>Duration</th>
-                <th>Download</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>debris_light_01</strong></td>
-                <td>Low Density</td>
-                <td>20.0s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-              <tr>
-                <td><strong>debris_heavy_step</strong></td>
-                <td>High Density</td>
-                <td>25.0s</td>
-                <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section class="section">
     <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h3 class="title is-4">Modalities</h3>
+
+      <div class="tabs is-centered is-toggle is-medium" id="top-level-tabs">
+        <ul>
+          <li class="is-active" data-target="main-scenes"><a>Scenes Explorer</a></li>
+          <li data-target="main-modalities"><a>Modalities Explorer</a></li>
+        </ul>
+      </div>
+
+      <div id="main-scenes" class="top-level-content">
+        <div class="columns is-centered has-text-centered mb-4">
+          <div class="column is-four-fifths">
+            <p>Select a scene tab below to view the available episodes.</p>
+          </div>
+        </div>
+        <div class="tabs is-centered is-boxed is-medium scenes">
+          <ul>
+            <li class="is-active" data-target="scene-lab">
+              <a>
+                <span class="icon is-small"><i class="fas fa-building"></i></span>
+                <span>Lab Hall</span>
+              </a>
+            </li>
+            <li data-target="scene-gym">
+              <a>
+                <span class="icon is-small"><i class="fas fa-dumbbell"></i></span>
+                <span>Gym Hall</span>
+              </a>
+            </li>
+            <li data-target="scene-skate">
+              <a>
+                <span class="icon is-small"><i class="fas fa-skating"></i></span>
+                <span>Skatepark</span>
+              </a>
+            </li>
+            <li data-target="scene-debris">
+              <a>
+                <span class="icon is-small"><i class="fas fa-cubes"></i></span>
+                <span>Debris Field</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="scene-lab" class="tab-content scene-content is-active has-text-centered">
+          <video controls width="100%" class="scene-video">
+            <source src="https://via.placeholder.com/800x450.mp4?text=Lab+Hall+Video" type="video/mp4">
+          </video>
+          <h4 class="title is-5 mt-4">Lab Hall Episodes</h4>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr class="has-background-white-ter">
+                  <th>Episode ID</th>
+                  <th>Motion Type</th>
+                  <th>Duration</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>lab_straight_01</strong></td>
+                  <td>Straight Walk</td>
+                  <td>15.0s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>lab_turn_left</strong></td>
+                  <td>90&deg; Turn</td>
+                  <td>08.5s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="scene-gym" class="tab-content scene-content has-text-centered">
+          <video controls width="100%" class="scene-video">
+            <source src="assets/explorer_scene/gym_hall.mp4" type="video/mp4">
+          </video>
+          <h4 class="title is-5 mt-4">Gym Hall Episodes</h4>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr class="has-background-white-ter">
+                  <th>Episode ID</th>
+                  <th>Equipment</th>
+                  <th>Duration</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>gym_mats_01</strong></td>
+                  <td>Soft Mats</td>
+                  <td>12.0s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>gym_box_jump</strong></td>
+                  <td>Box Obstacle</td>
+                  <td>05.2s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="scene-skate" class="tab-content scene-content has-text-centered">
+          <video controls width="100%" class="scene-video">
+            <source src="https://via.placeholder.com/800x450.mp4?text=Skatepark+Video" type="video/mp4">
+          </video>
+          <h4 class="title is-5 mt-4">Skatepark Episodes</h4>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr class="has-background-white-ter">
+                  <th>Episode ID</th>
+                  <th>Ramp Angle</th>
+                  <th>Duration</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>skate_ramp_up</strong></td>
+                  <td>20&deg; Slope</td>
+                  <td>10.5s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>skate_bowl_traverse</strong></td>
+                  <td>Curved Surface</td>
+                  <td>18.0s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="scene-debris" class="tab-content scene-content has-text-centered">
+          <video controls width="100%" class="scene-video">
+            <source src="https://via.placeholder.com/800x450.mp4?text=Debris+Field+Video" type="video/mp4">
+          </video>
+          <h4 class="title is-5 mt-4">Debris Field Episodes</h4>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr class="has-background-white-ter">
+                  <th>Episode ID</th>
+                  <th>Density</th>
+                  <th>Duration</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>debris_light_01</strong></td>
+                  <td>Low Density</td>
+                  <td>20.0s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+                <tr>
+                  <td><strong>debris_heavy_step</strong></td>
+                  <td>High Density</td>
+                  <td>25.0s</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
+    </div>
+
+    <div id="main-modalities" class="top-level-content" style="display: none;">
       <div class="tabs is-centered is-boxed is-medium modalities">
         <ul>
           <li class="is-active" data-target="all">
             <a>
-              <span>All</span>
+              <span>ALL</span>
             </a>
           </li>
           <li data-target="ego">
             <a>
-              <span>Ego</span>
+              <span>EGO</span>
             </a>
           </li>
           <li data-target="exo">
             <a>
-              <span>Exo</span>
+              <span>EXO</span>
             </a>
           </li>
           <li data-target="fixed">
             <a>
-              <span>Fixed</span>
+              <span>Fixed CAM</span>
             </a>
           </li>
-          <li data-target="gt">
+          <li data-target="slam">
             <a>
-              <span>Ground Truth</span>
+              <span>Multi-SLAM</span>
             </a>
           </li>
           <li data-target="scene">
@@ -487,15 +548,46 @@
       </div>
 
       <div id="modality-video-container" class="container">
-        <div id="video-all" class="modality-video-content"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+All" type="video/mp4"></video></div>
-        <div id="video-ego" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Ego" type="video/mp4"></video></div>
-        <div id="video-exo" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Exo" type="video/mp4"></video></div>
-        <div id="video-fixed" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Fixed" type="video/mp4"></video></div>
-        <div id="video-gt" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Ground+Truth" type="video/mp4"></video></div>
-        <div id="video-scene" class="modality-video-content" style="display: none;"><video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Modality+-+Scene" type="video/mp4"></video></div>
+        <div id="video-all" class="modality-video-content"><video controls width="100%">
+            <source src="./assets/explorer_modalities/all.mp4" type="video/mp4">
+          </video></div>
+        <div id="video-ego" class="modality-video-content" style="display: none;"><video controls width="100%">
+            <source src="./assets/explorer_modalities/ego.mov" type="video/quicktime">
+          </video></div>
+        <div id="video-exo" class="modality-video-content" style="display: none;"><video controls width="100%">
+            <source src="./assets/explorer_modalities/exo.mov" type="video/quicktime">
+          </video></div>
+        <div id="video-fixed" class="modality-video-content" style="display: none;"><video controls width="100%">
+            <source src="./assets/explorer_modalities/fixed.mp4" type="video/mp4">
+          </video></div>
+        <div id="video-slam" class="modality-video-content" style="display: none;"><video controls width="100%">
+            <source src="./assets/explorer_modalities/slam.mov" type="video/quicktime">
+          </video></div>
+        <div id="video-scene" class="modality-video-content" style="display: none;">
+          <div class="columns">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./assets/explorer_modalities/mesh.png" alt="Scene Mesh"
+                  style="border-radius: 8px;">
+              </figure>
+            </div>
+
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./assets/explorer_modalities/pointcloud.png" alt="Scene Point Cloud"
+                  style="border-radius: 8px;">
+              </figure>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    </div>
+
+    </div>
   </section>
+
 
   <section class="section">
     <div class="container is-max-desktop">
@@ -506,10 +598,14 @@
       </div>
       <div class="columns">
         <div class="column">
-          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Human2Robot+Video+1" type="video/mp4"></video>
+          <video controls width="100%">
+            <source src="./assets/human2robot/human.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="column">
-          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Human2Robot+Video+2" type="video/mp4"></video>
+          <video controls width="100%">
+            <source src="./assets/human2robot/robot.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -524,10 +620,14 @@
       </div>
       <div class="columns">
         <div class="column">
-          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+1" type="video/mp4"></video>
+          <video controls width="100%">
+            <source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+1" type="video/mp4">
+          </video>
         </div>
         <div class="column">
-          <video controls width="100%"><source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+2" type="video/mp4"></video>
+          <video controls width="100%">
+            <source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+2" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -535,13 +635,28 @@
 
 
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a>, <a href="https://beyondmimic.github.io/">BeyondMimic</a>,  <a href="https://omniretarget.github.io/">Omniretarget</a>.</p>
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{brandes2026egohtr,
+  title   = {EgoHTR: Egocentric 4D Demonstrations of Human Terrain Traversal},
+  author  = {Brandes, Alex and Sajelian, Haig Conti Georges and Patel, Manthan and Hollidt, Dominik and Li, Chenhao and Heyrman, Matthias and Hausd\"orfer, Oliver and Kaufmann, Manuel and Wang, Xi and Frey, Jonas and Schoellig, Angela P. and Holz, Christian and Pollefeys, Marc and Hutter, Marco},
+  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  year    = {2026}
+}</code></pre>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a>, <a
+            href="https://beyondmimic.github.io/">BeyondMimic</a>, <a
+            href="https://omniretarget.github.io/">Omniretarget</a>.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
+
 </html>
