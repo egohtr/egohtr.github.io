@@ -462,8 +462,8 @@
       <div class="tabs is-centered is-toggle is-medium" id="top-level-tabs">
         <ul>
           <li class="is-active" data-target="main-modalities"><a>Modalities Explorer</a></li>
-          <li data-target="main-stats"><a>Dataset Statistics</a></li>
           <li data-target="main-scenes"><a>Scenes Explorer</a></li>
+          <li data-target="main-stats"><a>Dataset Statistics</a></li>
         </ul>
       </div>
       <div id="main-stats" class="top-level-content" style="display: none;">
@@ -580,32 +580,36 @@
                   <th>Subject</th>
                   <th>Location</th>
                   <th>2nd Aria</th>
-                  <th>Pseudo GT</th>
+                  <th>MoCap GT</th>
+                  <th>Ego</th>
+                  <th>Body Model</th>
+                  <th>Scene</th>
+                  <th>Fixed Cam</th>
                   <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>cliff-path_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>29.50</td></tr>
-                <tr><td>crawling_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>23.23</td></tr>
-                <tr><td>double-high-object_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>28.60</td></tr>
-                <tr><td>high-object_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>22.87</td></tr>
-                <tr><td>narrow-path_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>22.43</td></tr>
-                <tr><td>stepping-stones_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>23.23</td></tr>
-                <tr><td>exomc-parkour_xhall_01</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>15.00</td></tr>
-                <tr><td>exomc-parkour_xhall_02</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>296.50</td></tr>
-                <tr><td>exomc-parkour_xhall_03</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>72.43</td></tr>
-                <tr><td>exomc-parkour_xhall_04</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>153.07</td></tr>
-                <tr><td>exomc-parkour_xhall_05</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>304.90</td></tr>
-                <tr><td>exomc-parkour_xhall_06</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>298.00</td></tr>
-                <tr><td>exo-cliff-stones_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
-                <tr><td>exo-cliff-stones_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>244.10</td></tr>
-                <tr><td>exo-high-object_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
-                <tr><td>exo-high-object_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
-                <tr><td>exo-parkour_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
-                <tr><td>exo-standing_s1_xhall_01</td><td>s1</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
-                <tr><td>exo-standing_s6_xhall_01</td><td>s6</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>243.53</td></tr>
-                <tr><td>exo-walking_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
-                <tr><td>exo-walking_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>cliff-path_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>29.50</td></tr>
+                <tr><td>crawling_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>23.23</td></tr>
+                <tr><td>double-high-object_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>28.60</td></tr>
+                <tr><td>high-object_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>22.87</td></tr>
+                <tr><td>narrow-path_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>22.43</td></tr>
+                <tr><td>stepping-stones_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>23.23</td></tr>
+                <tr><td>exomc-parkour_xhall_01</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>15.00</td></tr>
+                <tr><td>exomc-parkour_xhall_02</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>296.50</td></tr>
+                <tr><td>exomc-parkour_xhall_03</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>72.43</td></tr>
+                <tr><td>exomc-parkour_xhall_04</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>153.07</td></tr>
+                <tr><td>exomc-parkour_xhall_05</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>304.90</td></tr>
+                <tr><td>exomc-parkour_xhall_06</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>298.00</td></tr>
+                <tr><td>exo-cliff-stones_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-cliff-stones_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>244.10</td></tr>
+                <tr><td>exo-high-object_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-high-object_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-parkour_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-standing_s1_xhall_01</td><td>s1</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-standing_s6_xhall_01</td><td>s6</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>243.53</td></tr>
+                <tr><td>exo-walking_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-walking_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
               </tbody>
             </table>
           </div>
@@ -648,23 +652,27 @@
                   <th>Subject</th>
                   <th>Location</th>
                   <th>2nd Aria</th>
-                  <th>Pseudo GT</th>
+                  <th>MoCap GT</th>
+                  <th>Ego</th>
+                  <th>Body Model</th>
+                  <th>Scene</th>
+                  <th>Fixed Cam</th>
                   <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>climbing_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>105.90</td></tr>
-                <tr><td>crawling_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>69.30</td></tr>
-                <tr><td>double-high-object_s2_gym_01</td><td>s2</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>78.37</td></tr>
-                <tr><td>overhang-object_s2_gym_03</td><td>s2</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>37.83</td></tr>
-                <tr><td>parkour_s1_gym_02</td><td>s1</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>45.33</td></tr>
-                <tr><td>parkour_s1_gym_03</td><td>s1</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>62.27</td></tr>
-                <tr><td>parkour_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>110.77</td></tr>
-                <tr><td>walking_s2_gym_01</td><td>s2</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>104.77</td></tr>
-                <tr><td>parkour_s1_gym_04</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>41.10</td></tr>
-                <tr><td>parkour_s1_gym_05</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>45.03</td></tr>
-                <tr><td>parkour_s1_gym_06</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>66.10</td></tr>
-                <tr><td>parkour_s1_gym_07</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>41.67</td></tr>
+                <tr><td>climbing_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>105.90</td></tr>
+                <tr><td>crawling_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>69.30</td></tr>
+                <tr><td>double-high-object_s2_gym_01</td><td>s2</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>78.37</td></tr>
+                <tr><td>overhang-object_s2_gym_03</td><td>s2</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>37.83</td></tr>
+                <tr><td>parkour_s1_gym_02</td><td>s1</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>45.33</td></tr>
+                <tr><td>parkour_s1_gym_03</td><td>s1</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>62.27</td></tr>
+                <tr><td>parkour_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>110.77</td></tr>
+                <tr><td>walking_s2_gym_01</td><td>s2</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>104.77</td></tr>
+                <tr><td>parkour_s1_gym_04</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>41.10</td></tr>
+                <tr><td>parkour_s1_gym_05</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>45.03</td></tr>
+                <tr><td>parkour_s1_gym_06</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>66.10</td></tr>
+                <tr><td>parkour_s1_gym_07</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>41.67</td></tr>
               </tbody>
             </table>
           </div>
@@ -683,13 +691,17 @@
                   <th>Subject</th>
                   <th>Location</th>
                   <th>2nd Aria</th>
-                  <th>Pseudo GT</th>
+                  <th>MoCap GT</th>
+                  <th>Ego</th>
+                  <th>Body Model</th>
+                  <th>Scene</th>
+                  <th>Fixed Cam</th>
                   <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>double-stairs_lee_01</td><td>s1</td><td>L1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>20.07</td></tr>
-                <tr><td>double-stairs_lee_02</td><td>s1</td><td>L1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>22.37</td></tr>
+                <tr><td>double-stairs_lee_01</td><td>s1</td><td>L1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>20.07</td></tr>
+                <tr><td>double-stairs_lee_02</td><td>s1</td><td>L1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>22.37</td></tr>
               </tbody>
             </table>
           </div>
@@ -708,30 +720,34 @@
                   <th>Subject</th>
                   <th>Location</th>
                   <th>2nd Aria</th>
-                  <th>Pseudo GT</th>
+                  <th>MoCap GT</th>
+                  <th>Ego</th>
+                  <th>Body Model</th>
+                  <th>Scene</th>
+                  <th>Fixed Cam</th>
                   <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>cliff-jump_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>101.27</td></tr>
-                <tr><td>cliff-jump_s4_bzb_02</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>80.17</td></tr>
-                <tr><td>cliff-jump_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>46.97</td></tr>
-                <tr><td>cliff-jump_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>115.77</td></tr>
-                <tr><td>cliff_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>64.77</td></tr>
-                <tr><td>crawling_s1_bzb_02</td><td>s1</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>88.13</td></tr>
-                <tr><td>crawling_s1_bzb_03</td><td>s1</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>96.23</td></tr>
-                <tr><td>rescue_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>62.50</td></tr>
-                <tr><td>rescue_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>70.93</td></tr>
-                <tr><td>rocky-path_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>64.17</td></tr>
-                <tr><td>rocky-path_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>55.77</td></tr>
-                <tr><td>rocky-path_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>86.47</td></tr>
-                <tr><td>walking_rocky_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>77.37</td></tr>
-                <tr><td>walking_rocky_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>72.57</td></tr>
-                <tr><td>walking_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>70.97</td></tr>
-                <tr><td>window-rocky_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>66.00</td></tr>
-                <tr><td>window-rocky_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>44.73</td></tr>
-                <tr><td>window_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>60.80</td></tr>
-                <tr><td>window_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>47.97</td></tr>
+                <tr><td>cliff-jump_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>101.27</td></tr>
+                <tr><td>cliff-jump_s4_bzb_02</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>80.17</td></tr>
+                <tr><td>cliff-jump_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>46.97</td></tr>
+                <tr><td>cliff-jump_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>115.77</td></tr>
+                <tr><td>cliff_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>64.77</td></tr>
+                <tr><td>crawling_s1_bzb_02</td><td>s1</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>88.13</td></tr>
+                <tr><td>crawling_s1_bzb_03</td><td>s1</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>96.23</td></tr>
+                <tr><td>rescue_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>62.50</td></tr>
+                <tr><td>rescue_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>70.93</td></tr>
+                <tr><td>rocky-path_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>64.17</td></tr>
+                <tr><td>rocky-path_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>55.77</td></tr>
+                <tr><td>rocky-path_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>86.47</td></tr>
+                <tr><td>walking_rocky_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>77.37</td></tr>
+                <tr><td>walking_rocky_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>72.57</td></tr>
+                <tr><td>walking_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>70.97</td></tr>
+                <tr><td>window-rocky_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>66.00</td></tr>
+                <tr><td>window-rocky_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>44.73</td></tr>
+                <tr><td>window_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>60.80</td></tr>
+                <tr><td>window_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>47.97</td></tr>
               </tbody>
             </table>
           </div>
@@ -942,18 +958,29 @@
 
       <figure class="image has-text-centered">
         <img src="./assets/application/benchmark_legend.png" alt="Capture system overview"
-          style="max-width: 800px; width: 50%; margin: 5px auto; border-radius: 8px;">
+          style="max-width: 800px; width: 75%; margin: 5px auto; border-radius: 8px;">
       </figure>
 
         <div class="columns">
-          <div class="column">
+
+          <div class="column has-text-centered">
+            <figure class="image has-text-centered">
+              <img src="./assets/application/benchmark_human3r.png" alt="Capture system overview"
+                style="max-width: 800px; width: 100%; margin: 5px auto; border-radius: 8px;">
+            </figure>
             <video controls muted playsinline width="100%">
-              <source src="./assets/application/benchmark_human3r.mp4" type="video/mp4">
+              <source src="./assets/application/benchmark_human3r.mp4" type="video/mp4"
+              style="margin: 15px auto">
             </video>
           </div>
-          <div class="column">
+          <div class="column has-text-centered">
+            <figure class="image has-text-centered">
+              <img src="./assets/application/benchmark_josh.png" alt="Capture system overview"
+                style="max-width: 800px; width: 100%; margin: 5px auto; border-radius: 8px;">
+            </figure>
             <video controls muted playsinline width="100%">
-              <source src="./assets/application/benchmark_josh.mp4" type="video/mp4">
+              <source src="./assets/application/benchmark_josh.mp4" type="video/mp4"
+              style="margin: 15px auto">
             </video>
           </div>
         </div>
