@@ -59,6 +59,41 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
+    /* Compact episode tables: minimize vertical height */
+    .table-compact th,
+    .table-compact td {
+      padding: 0.2em 0.6em;
+      font-size: 0.8rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    /* Dataset totals: lean stat-tile row */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.75rem 2.5rem;
+      margin: 0.5rem 0 2rem;
+    }
+
+    .stat-tile {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .stat-tile .stat-value {
+      font-size: 2.0rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .stat-tile .stat-label {
+      font-size: 0.8rem;
+      color: #7a7a7a;
+      margin-top: 0.2rem;
+    }
   </style>
 
   <script>
@@ -105,6 +140,48 @@
         });
       });
 
+      // --- Tab Group 3: Methodology ---
+      const methodTabs = document.querySelectorAll('.tabs.methodology li');
+      const methodTabContents = document.querySelectorAll('.tab-content.methodology-content');
+
+      methodTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          methodTabs.forEach(t => t.classList.remove('is-active'));
+          tab.classList.add('is-active');
+
+          const target = tab.dataset.target;
+
+          methodTabContents.forEach(content => {
+            if (content.id === target) {
+              content.classList.add('is-active');
+            } else {
+              content.classList.remove('is-active');
+            }
+          });
+        });
+      });
+
+      // --- Tab Group 4: Application ---
+      const appTabs = document.querySelectorAll('.tabs.application li');
+      const appTabContents = document.querySelectorAll('.tab-content.application-content');
+
+      appTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          appTabs.forEach(t => t.classList.remove('is-active'));
+          tab.classList.add('is-active');
+
+          const target = tab.dataset.target;
+
+          appTabContents.forEach(content => {
+            if (content.id === target) {
+              content.classList.add('is-active');
+            } else {
+              content.classList.remove('is-active');
+            }
+          });
+        });
+      });
+
       // --- Tab Group 0: Top-Level Toggle ---
       const topTabs = document.querySelectorAll('#top-level-tabs li');
       const topContents = document.querySelectorAll('.top-level-content');
@@ -130,6 +207,14 @@
       // Initial display update for modalities
       if (modalityTabs.length > 0) {
         modalityTabs[0].click();
+      }
+      // Initial display update for methodology
+      if (methodTabs.length > 0) {
+        methodTabs[0].click();
+      }
+      // Initial display update for application
+      if (appTabs.length > 0) {
+        appTabs[0].click();
       }
     });
   </script>
@@ -319,37 +404,106 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Dataset Explorer</h2>
-          <div class="content has-text-justified">
-            <p>
-              Select a scene tab below to view the available episodes. Each tab displays a preview of the motion
-              and a list of downloadable data sequences.
-            </p>
+          <p>
+            Select an explorer tab below to view the statistics, available modalities and scene episodes.
+          </p>
+          <div class="stats-row">
+            <div class="stat-tile">
+              <div class="stat-value">7</div>
+              <div class="stat-label">Scenes</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">55</div>
+              <div class="stat-label">Sequences</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">1.37h</div>
+              <div class="stat-label">Total Duration</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">~150k</div>
+              <div class="stat-label">Frames @ 30fps</div>
+            </div>
+            <!-- new line -->
+          </div>
+          
+          <div class="stats-row">
+            <div class="stat-tile">
+              <div class="stat-value">8</div>
+              <div class="stat-label">Subjects (4F / 4M)</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">36</div>
+              <div class="stat-label">Multi-View Seq. (0.88h)</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">0.7h</div>
+              <div class="stat-label">Mocap GT Test Subset</div>
+            </div>
           </div>
         </div>
       </div>
 
-
-  </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-
       <div class="tabs is-centered is-toggle is-medium" id="top-level-tabs">
         <ul>
-          <li class="is-active" data-target="main-scenes"><a>Scenes Explorer</a></li>
+          <li class="is-active" data-target="main-stats"><a>Dataset Statistics</a></li>
           <li data-target="main-modalities"><a>Modalities Explorer</a></li>
+          <li data-target="main-scenes"><a>Scenes Explorer</a></li>
         </ul>
       </div>
+      <div id="main-stats" class="top-level-content">
+        <div class="columns is-centered has-text-centered mb-2">
+          <div class="column is-four-fifths" centered>
+            <p>4D Human-Scene reconstructed sequences captured for agile human-terrain interaction.</p>
+          </div>
+        </div>
 
-      <div id="main-scenes" class="top-level-content">
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth table-compact" style="margin: 0 auto; max-width: 760px;">
+            <thead>
+              <tr class="has-background-white-ter">
+                <th>Scene</th>
+                <th>ID</th>
+                <th>Action</th>
+                <th>Subjects</th>
+                <th>#Seq</th>
+                <th>Dur. (min)</th>
+                <th>Frames (k)</th>
+                <th>Avg. Len (min)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Office</td><td>L1</td><td>St</td><td>1M</td><td>2</td><td>0.71</td><td>1.27</td><td>0.35</td></tr>
+              <tr><td rowspan="3">Lab Hall</td><td>X1</td><td>P</td><td>1M</td><td>6</td><td>2.50</td><td>4.50</td><td>0.42</td></tr>
+              <tr><td>X2</td><td>S,P</td><td>1M</td><td>6</td><td>19.00</td><td>34.20</td><td>3.17</td></tr>
+              <tr><td>X3</td><td>S,P</td><td>2F,2M</td><td>9</td><td>23.29</td><td>41.93</td><td>2.59</td></tr>
+              <tr><td rowspan="2">Gym Hall</td><td>G1</td><td>St,C,P,F</td><td>2F,1M</td><td>8</td><td>10.24</td><td>18.44</td><td>1.28</td></tr>
+              <tr><td>G2</td><td>P,F</td><td>1M</td><td>4</td><td>3.23</td><td>5.82</td><td>0.81</td></tr>
+              <tr><td>Debris Field</td><td>B1</td><td>St,P</td><td>4M</td><td>20</td><td>23.01</td><td>41.42</td><td>1.15</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="has-text-centered is-size-7 has-text-grey mt-2">
+          Action: S = Sitting/Lay, St = Stairs, P = Parkour, C = Climbing, F = Flips.
+        </p>
+      </div>
+
+      <div id="main-scenes" class="top-level-content" style="display: none;">
         <div class="columns is-centered has-text-centered mb-4">
           <div class="column is-four-fifths">
-            <p>Select a scene tab below to view the available episodes.</p>
+            <p>Select a scene tab below to view the available scenes and their corresponding episodes.</p>
           </div>
         </div>
         <div class="tabs is-centered is-boxed is-medium scenes">
           <ul>
-            <li class="is-active" data-target="scene-lab">
+            <li class="is-active" data-target="scene-debris">
+              <a>
+                <span class="icon is-small"><i class="fas fa-cubes"></i></span>
+                <span>Debris Field</span>
+              </a>
+            </li>
+            <li data-target="scene-lab">
               <a>
                 <span class="icon is-small"><i class="fas fa-building"></i></span>
                 <span>Lab Hall</span>
@@ -364,79 +518,138 @@
             <li data-target="scene-skate">
               <a>
                 <span class="icon is-small"><i class="fas fa-skating"></i></span>
-                <span>Skatepark</span>
-              </a>
-            </li>
-            <li data-target="scene-debris">
-              <a>
-                <span class="icon is-small"><i class="fas fa-cubes"></i></span>
-                <span>Debris Field</span>
+                <span>Office</span>
               </a>
             </li>
           </ul>
         </div>
 
         <div id="scene-lab" class="tab-content scene-content is-active has-text-centered">
-          <video controls width="100%" class="scene-video">
-            <source src="https://via.placeholder.com/800x450.mp4?text=Lab+Hall+Video" type="video/mp4">
-          </video>
-          <h4 class="title is-5 mt-4">Lab Hall Episodes</h4>
+                    <div class="columns">
+        
+            <!-- First Video Column -->
+            <div class="column has-text-centered">
+              <!-- Caption for Video 1 -->
+              <p class="mb-2 has-text-weight-bold">X1</p>
+              <video controls width="100%">
+                <source src="./assets/explorer_scene/lab_hall_00.mp4" type="video/mp4">
+              </video>
+            </div>
+            
+            <!-- Second Video Column -->
+            <div class="column has-text-centered">
+              <!-- Caption for Video 2 -->
+              <p class="mb-2 has-text-weight-bold">X2</p>
+              <video controls width="100%">
+                <source src="./assets/explorer_scene/lab_hall_01.mp4" type="video/mp4">
+              </video>
+            </div>
+            
+            <!-- Third Video Column -->
+            <div class="column has-text-centered">
+              <!-- Caption for Video 3 -->
+              <p class="mb-2 has-text-weight-bold">X3</p>
+              <video controls width="100%">
+                <source src="./assets/explorer_scene/lab_hall_02.mp4" type="video/mp4">
+              </video>
+            </div>
+            
+          </div>
+
+          <!-- <h4 class="title is-5 mt-4">Lab Hall Episodes</h4> -->
           <div class="table-container">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth table-compact">
               <thead>
                 <tr class="has-background-white-ter">
-                  <th>Episode ID</th>
-                  <th>Motion Type</th>
-                  <th>Duration</th>
-                  <th>Download</th>
+                  <th>Sequence</th>
+                  <th>Subject</th>
+                  <th>Location</th>
+                  <th>2nd Aria</th>
+                  <th>Pseudo GT</th>
+                  <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><strong>lab_straight_01</strong></td>
-                  <td>Straight Walk</td>
-                  <td>15.0s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
-                <tr>
-                  <td><strong>lab_turn_left</strong></td>
-                  <td>90&deg; Turn</td>
-                  <td>08.5s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
+                <tr><td>cliff-path_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>29.50</td></tr>
+                <tr><td>crawling_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>23.23</td></tr>
+                <tr><td>double-high-object_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>28.60</td></tr>
+                <tr><td>high-object_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>22.87</td></tr>
+                <tr><td>narrow-path_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>22.43</td></tr>
+                <tr><td>stepping-stones_xhall_01</td><td>s1</td><td>X1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>23.23</td></tr>
+                <tr><td>exomc-parkour_xhall_01</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>15.00</td></tr>
+                <tr><td>exomc-parkour_xhall_02</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>296.50</td></tr>
+                <tr><td>exomc-parkour_xhall_03</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>72.43</td></tr>
+                <tr><td>exomc-parkour_xhall_04</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>153.07</td></tr>
+                <tr><td>exomc-parkour_xhall_05</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>304.90</td></tr>
+                <tr><td>exomc-parkour_xhall_06</td><td>s1</td><td>X2</td><td class="has-text-danger">&cross;</td><td class="has-text-success">&check;</td><td>298.00</td></tr>
+                <tr><td>exo-cliff-stones_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-cliff-stones_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>244.10</td></tr>
+                <tr><td>exo-high-object_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-high-object_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-parkour_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-standing_s1_xhall_01</td><td>s1</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-standing_s6_xhall_01</td><td>s6</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>243.53</td></tr>
+                <tr><td>exo-walking_s4_xhall_01</td><td>s4</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
+                <tr><td>exo-walking_s5_xhall_01</td><td>s5</td><td>X3</td><td class="has-text-success">&check;</td><td class="has-text-success">&check;</td><td>130.00</td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
         <div id="scene-gym" class="tab-content scene-content has-text-centered">
+          
+          <div class="columns">
+        
+            <!-- First Video Column -->
+            <div class="column has-text-centered">
+              <!-- Caption for Video 1 -->
+              <p class="mb-2 has-text-weight-bold">G1</p>
+              <video controls width="100%">
+                <source src="./assets/explorer_scene/gym_hall_00.mp4" type="video/mp4">
+              </video>
+            </div>
+            
+            <!-- Second Video Column -->
+            <div class="column has-text-centered">
+              <!-- Caption for Video 2 -->
+              <p class="mb-2 has-text-weight-bold">G2</p>
+              <video controls width="100%">
+                <source src="./assets/explorer_scene/gym_hall_01.mp4" type="video/mp4">
+              </video>
+            </div>
+            
+          </div>
+
+<!-- 
           <video controls width="100%" class="scene-video">
-            <source src="assets/explorer_scene/gym_hall.mp4" type="video/mp4">
-          </video>
-          <h4 class="title is-5 mt-4">Gym Hall Episodes</h4>
+            <source src="assets/explorer_scene/gym_hall_00.mp4" type="video/mp4">
+          </video> -->
+          <!-- <h4 class="title is-5 mt-4">Gym Hall Episodes</h4> -->
           <div class="table-container">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth table-compact">
               <thead>
                 <tr class="has-background-white-ter">
-                  <th>Episode ID</th>
-                  <th>Equipment</th>
-                  <th>Duration</th>
-                  <th>Download</th>
+                  <th>Sequence</th>
+                  <th>Subject</th>
+                  <th>Location</th>
+                  <th>2nd Aria</th>
+                  <th>Pseudo GT</th>
+                  <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><strong>gym_mats_01</strong></td>
-                  <td>Soft Mats</td>
-                  <td>12.0s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
-                <tr>
-                  <td><strong>gym_box_jump</strong></td>
-                  <td>Box Obstacle</td>
-                  <td>05.2s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
+                <tr><td>climbing_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>105.90</td></tr>
+                <tr><td>crawling_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>69.30</td></tr>
+                <tr><td>double-high-object_s2_gym_01</td><td>s2</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>78.37</td></tr>
+                <tr><td>overhang-object_s2_gym_03</td><td>s2</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>37.83</td></tr>
+                <tr><td>parkour_s1_gym_02</td><td>s1</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>45.33</td></tr>
+                <tr><td>parkour_s1_gym_03</td><td>s1</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>62.27</td></tr>
+                <tr><td>parkour_s3_gym_01</td><td>s3</td><td>G1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>110.77</td></tr>
+                <tr><td>walking_s2_gym_01</td><td>s2</td><td>G1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>104.77</td></tr>
+                <tr><td>parkour_s1_gym_04</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>41.10</td></tr>
+                <tr><td>parkour_s1_gym_05</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>45.03</td></tr>
+                <tr><td>parkour_s1_gym_06</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>66.10</td></tr>
+                <tr><td>parkour_s1_gym_07</td><td>s1</td><td>G2</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>41.67</td></tr>
               </tbody>
             </table>
           </div>
@@ -444,32 +657,24 @@
 
         <div id="scene-skate" class="tab-content scene-content has-text-centered">
           <video controls width="100%" class="scene-video">
-            <source src="https://via.placeholder.com/800x450.mp4?text=Skatepark+Video" type="video/mp4">
+            <source src="./assets/explorer_scene/office.mp4" type="video/mp4">
           </video>
-          <h4 class="title is-5 mt-4">Skatepark Episodes</h4>
+          <!-- <h4 class="title is-5 mt-4">Office Episodes</h4> -->
           <div class="table-container">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth table-compact">
               <thead>
                 <tr class="has-background-white-ter">
-                  <th>Episode ID</th>
-                  <th>Ramp Angle</th>
-                  <th>Duration</th>
-                  <th>Download</th>
+                  <th>Sequence</th>
+                  <th>Subject</th>
+                  <th>Location</th>
+                  <th>2nd Aria</th>
+                  <th>Pseudo GT</th>
+                  <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><strong>skate_ramp_up</strong></td>
-                  <td>20&deg; Slope</td>
-                  <td>10.5s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
-                <tr>
-                  <td><strong>skate_bowl_traverse</strong></td>
-                  <td>Curved Surface</td>
-                  <td>18.0s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
+                <tr><td>double-stairs_lee_01</td><td>s1</td><td>L1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>20.07</td></tr>
+                <tr><td>double-stairs_lee_02</td><td>s1</td><td>L1</td><td class="has-text-danger">&cross;</td><td class="has-text-danger">&cross;</td><td>22.37</td></tr>
               </tbody>
             </table>
           </div>
@@ -477,32 +682,41 @@
 
         <div id="scene-debris" class="tab-content scene-content has-text-centered">
           <video controls width="100%" class="scene-video">
-            <source src="https://via.placeholder.com/800x450.mp4?text=Debris+Field+Video" type="video/mp4">
+            <source src="./assets/explorer_scene/debris_field.mp4" type="video/mp4">
           </video>
-          <h4 class="title is-5 mt-4">Debris Field Episodes</h4>
+          <!-- <h4 class="title is-5 mt-4">Debris Field Episodes</h4> -->
           <div class="table-container">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth table-compact">
               <thead>
                 <tr class="has-background-white-ter">
-                  <th>Episode ID</th>
-                  <th>Density</th>
-                  <th>Duration</th>
-                  <th>Download</th>
+                  <th>Sequence</th>
+                  <th>Subject</th>
+                  <th>Location</th>
+                  <th>2nd Aria</th>
+                  <th>Pseudo GT</th>
+                  <th>Duration (s)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><strong>debris_light_01</strong></td>
-                  <td>Low Density</td>
-                  <td>20.0s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
-                <tr>
-                  <td><strong>debris_heavy_step</strong></td>
-                  <td>High Density</td>
-                  <td>25.0s</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">Download</a></td>
-                </tr>
+                <tr><td>cliff-jump_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>101.27</td></tr>
+                <tr><td>cliff-jump_s4_bzb_02</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>80.17</td></tr>
+                <tr><td>cliff-jump_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>46.97</td></tr>
+                <tr><td>cliff-jump_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>115.77</td></tr>
+                <tr><td>cliff_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>64.77</td></tr>
+                <tr><td>crawling_s1_bzb_02</td><td>s1</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>88.13</td></tr>
+                <tr><td>crawling_s1_bzb_03</td><td>s1</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>96.23</td></tr>
+                <tr><td>rescue_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>62.50</td></tr>
+                <tr><td>rescue_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>70.93</td></tr>
+                <tr><td>rocky-path_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>64.17</td></tr>
+                <tr><td>rocky-path_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>55.77</td></tr>
+                <tr><td>rocky-path_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>86.47</td></tr>
+                <tr><td>walking_rocky_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>77.37</td></tr>
+                <tr><td>walking_rocky_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>72.57</td></tr>
+                <tr><td>walking_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>70.97</td></tr>
+                <tr><td>window-rocky_s7_bzb_01</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>66.00</td></tr>
+                <tr><td>window-rocky_s7_bzb_02</td><td>s7</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>44.73</td></tr>
+                <tr><td>window_s4_bzb_01</td><td>s4</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>60.80</td></tr>
+                <tr><td>window_s8_bzb_01</td><td>s8</td><td>B1</td><td class="has-text-success">&check;</td><td class="has-text-danger">&cross;</td><td>47.97</td></tr>
               </tbody>
             </table>
           </div>
@@ -512,6 +726,11 @@
     </div>
 
     <div id="main-modalities" class="top-level-content" style="display: none;">
+      <div class="columns is-centered has-text-centered mb-4">
+        <div class="column is-four-fifths">
+          <p>Select a modality tab below to view visualize the correspoding modality for an example episode.</p>
+        </div>
+      </div>
       <div class="tabs is-centered is-boxed is-medium modalities">
         <ul>
           <li class="is-active" data-target="all">
@@ -552,16 +771,16 @@
             <source src="./assets/explorer_modalities/all.mp4" type="video/mp4">
           </video></div>
         <div id="video-ego" class="modality-video-content" style="display: none;"><video controls width="100%">
-            <source src="./assets/explorer_modalities/ego.mov" type="video/quicktime">
+            <source src="./assets/explorer_modalities/ego.mp4" type="video/mp4">
           </video></div>
         <div id="video-exo" class="modality-video-content" style="display: none;"><video controls width="100%">
-            <source src="./assets/explorer_modalities/exo.mov" type="video/quicktime">
+            <source src="./assets/explorer_modalities/exo.mp4" type="video/mp4">
           </video></div>
         <div id="video-fixed" class="modality-video-content" style="display: none;"><video controls width="100%">
             <source src="./assets/explorer_modalities/fixed.mp4" type="video/mp4">
           </video></div>
         <div id="video-slam" class="modality-video-content" style="display: none;"><video controls width="100%">
-            <source src="./assets/explorer_modalities/slam.mov" type="video/quicktime">
+            <source src="./assets/explorer_modalities/slam.mp4" type="video/mp4">
           </video></div>
         <div id="video-scene" class="modality-video-content" style="display: none;">
           <div class="columns">
@@ -593,25 +812,128 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Human2Robot</h2>
+          <h2 class="title is-3">Methodology</h2>
         </div>
       </div>
-      <div class="columns">
-        <div class="column">
-          <video controls width="100%">
-            <source src="./assets/human2robot/human.mp4" type="video/mp4">
-          </video>
+
+      <figure class="image has-text-centered">
+        <img src="./assets/capture_system/method_all.png" alt="Capture system overview"
+          style="max-width: 800px; width: 75%; margin: 0 auto; border-radius: 8px;">
+      </figure>
+
+      <div class="tabs is-centered is-boxed is-medium methodology">
+        <ul>
+          <li class="is-active" data-target="method-capture">
+            <a><span>Capture System</span></a>
+          </li>
+          <li data-target="method-h2r">
+            <a><span>Human2Robot</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="method-capture" class="tab-content methodology-content is-active">
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth table-compact"
+            style="margin: 0 auto; max-width: 760px;">
+            <thead>
+              <tr class="has-background-white-ter">
+                <th>#</th>
+                <th>Sensor</th>
+                <th>Role</th>
+                <th>Placement</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Project Aria Glasses (Gen. 1)</td><td>Egocentric capture</td><td>Head-mounted</td><td>Required</td></tr>
+              <tr><td>2</td><td>Rokoko Pro II</td><td>Body motion capture</td><td>Body-worn (IMU suit)</td><td>Required</td></tr>
+              <tr><td>3</td><td>Leica BLK2GO</td><td>Scene reconstruction</td><td>Handheld scanner</td><td>Required</td></tr>
+              <tr><td>4</td><td>Project Aria Glasses (2nd)</td><td>Multi-view / exocentric capture</td><td>Observer-worn</td><td>Optional</td></tr>
+              <tr><td>5</td><td>Fixed-View Camera</td><td>Third-person reference view</td><td>Static</td><td>Optional</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="column">
-          <video controls width="100%">
-            <source src="./assets/human2robot/robot.mp4" type="video/mp4">
-          </video>
+      </div>
+
+      <div id="method-h2r" class="tab-content methodology-content has-text-centered">
+        <div class="content has-text-justified">
+          <p>
+            The scene-aware retargeting pipeline used for the G1 embodiement builds on the work of <a href="https://arxiv.org/abs/2509.26633">OmniRetarget</a>, <a href="https://arxiv.org/abs/2510.02252">GMR</a> and <a href="https://arxiv.org/abs/2205.02961">CoACD</a>.
+          </p>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <video controls width="100%">
+              <source src="./assets/human2robot/human.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls width="100%">
+              <source src="./assets/human2robot/robot.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Application</h2>
+        </div>
+      </div>
+
+      <div class="tabs is-centered is-boxed is-medium application">
+        <ul>
+          <li class="is-active" data-target="app-pwbc">
+            <a><span>Perceptive Whole-Body Control</span></a>
+          </li>
+          <li data-target="app-bench">
+            <a><span>Benchmarking</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="app-pwbc" class="tab-content application-content is-active has-text-centered">
+        <p class="mb-4">We train perceptive whole-body control policies from reconstructed reference motions and
+          deploy them on a Unitree G1 humanoid.</p>
+        <div class="columns">
+          <div class="column">
+            <video controls width="100%">
+              <source src="./assets/application/whole_body_control_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls width="100%">
+              <source src="./assets/application/whole_body_control_2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div id="app-bench" class="tab-content application-content has-text-centered">
+        <p class="mb-4">We benchmark reconstruction accuracy against marker-based motion capture ground truth
+          across diverse terrain sequences.</p>
+        <div class="columns">
+          <div class="column">
+            <video controls width="100%">
+              <source src="./assets/application/benchmark_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls width="100%">
+              <source src="./assets/application/benchmark_2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -631,7 +953,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
 
 
