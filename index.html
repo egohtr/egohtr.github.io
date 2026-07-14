@@ -6,7 +6,8 @@
   <meta name="description"
     content="Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/titel/logo.svg">
+  <link rel="icon" type="image/png" href="assets/titel/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/titel/logo.svg">
   <title>EgoHTR</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -460,12 +461,12 @@
 
       <div class="tabs is-centered is-toggle is-medium" id="top-level-tabs">
         <ul>
-          <li class="is-active" data-target="main-stats"><a>Dataset Statistics</a></li>
-          <li data-target="main-modalities"><a>Modalities Explorer</a></li>
+          <li class="is-active" data-target="main-modalities"><a>Modalities Explorer</a></li>
+          <li data-target="main-stats"><a>Dataset Statistics</a></li>
           <li data-target="main-scenes"><a>Scenes Explorer</a></li>
         </ul>
       </div>
-      <div id="main-stats" class="top-level-content">
+      <div id="main-stats" class="top-level-content" style="display: none;">
         <div class="columns is-centered has-text-centered mb-2">
           <div class="column is-four-fifths" centered>
             <p>Detailed statistics for the 4D Human-Scene reconstructed sequences captured for agile human-terrain interaction.</p>
@@ -739,7 +740,7 @@
 
     </div>
 
-    <div id="main-modalities" class="top-level-content" style="display: none;">
+    <div id="main-modalities" class="top-level-content">
       <div class="columns is-centered has-text-centered mb-4">
         <div class="column is-four-fifths">
           <p>Select a modality tab below to view visualize the correspoding modality for an example episode.</p>
@@ -772,6 +773,11 @@
               <span>Multi-SLAM</span>
             </a>
           </li>
+          <li data-target="body-model">
+            <a>
+              <span>Body Model</span>
+            </a>
+          </li>
           <li data-target="scene">
             <a>
               <span>Scene</span>
@@ -795,6 +801,9 @@
           </video></div>
         <div id="video-slam" class="modality-video-content" style="display: none;"><video controls muted playsinline width="100%">
             <source src="./assets/explorer_modalities/slam.mp4" type="video/mp4">
+          </video></div>
+        <div id="video-body-model" class="modality-video-content" style="display: none;"><video controls muted playsinline width="100%">
+            <source src="./assets/explorer_modalities/body_model.mp4" type="video/mp4">
           </video></div>
         <div id="video-scene" class="modality-video-content" style="display: none;">
           <div class="columns">
