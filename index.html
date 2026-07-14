@@ -216,6 +216,20 @@
       if (appTabs.length > 0) {
         appTabs[0].click();
       }
+
+      // --- Auto-play videos as they enter the viewport (e.g. via scrolling or a tab switch) ---
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(() => { });
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('video').forEach(video => videoObserver.observe(video));
     });
   </script>
 </head>
@@ -249,7 +263,7 @@
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a target="_blank" href="https://scholar.google.com/citations?user=7ElOFaUAAAAJ&hl=en">Manthan
-                  Patel</a><sup> 1</sup>
+                  Patel</a><sup>1</sup>
               </span>
               <span class="author-block">
                 <a target="_blank" href="https://scholar.google.com/citations?user=S2368c0AAAAJ&hl=en">Dominik
@@ -454,7 +468,7 @@
       <div id="main-stats" class="top-level-content">
         <div class="columns is-centered has-text-centered mb-2">
           <div class="column is-four-fifths" centered>
-            <p>4D Human-Scene reconstructed sequences captured for agile human-terrain interaction.</p>
+            <p>Detailed statistics for the 4D Human-Scene reconstructed sequences captured for agile human-terrain interaction.</p>
           </div>
         </div>
 
@@ -531,7 +545,7 @@
             <div class="column has-text-centered">
               <!-- Caption for Video 1 -->
               <p class="mb-2 has-text-weight-bold">X1</p>
-              <video controls width="100%">
+              <video controls muted playsinline width="100%">
                 <source src="./assets/explorer_scene/lab_hall_00.mp4" type="video/mp4">
               </video>
             </div>
@@ -540,7 +554,7 @@
             <div class="column has-text-centered">
               <!-- Caption for Video 2 -->
               <p class="mb-2 has-text-weight-bold">X2</p>
-              <video controls width="100%">
+              <video controls muted playsinline width="100%">
                 <source src="./assets/explorer_scene/lab_hall_01.mp4" type="video/mp4">
               </video>
             </div>
@@ -549,7 +563,7 @@
             <div class="column has-text-centered">
               <!-- Caption for Video 3 -->
               <p class="mb-2 has-text-weight-bold">X3</p>
-              <video controls width="100%">
+              <video controls muted playsinline width="100%">
                 <source src="./assets/explorer_scene/lab_hall_02.mp4" type="video/mp4">
               </video>
             </div>
@@ -604,7 +618,7 @@
             <div class="column has-text-centered">
               <!-- Caption for Video 1 -->
               <p class="mb-2 has-text-weight-bold">G1</p>
-              <video controls width="100%">
+              <video controls muted playsinline width="100%">
                 <source src="./assets/explorer_scene/gym_hall_00.mp4" type="video/mp4">
               </video>
             </div>
@@ -613,7 +627,7 @@
             <div class="column has-text-centered">
               <!-- Caption for Video 2 -->
               <p class="mb-2 has-text-weight-bold">G2</p>
-              <video controls width="100%">
+              <video controls muted playsinline width="100%">
                 <source src="./assets/explorer_scene/gym_hall_01.mp4" type="video/mp4">
               </video>
             </div>
@@ -621,7 +635,7 @@
           </div>
 
 <!-- 
-          <video controls width="100%" class="scene-video">
+          <video controls muted playsinline width="100%" class="scene-video">
             <source src="assets/explorer_scene/gym_hall_00.mp4" type="video/mp4">
           </video> -->
           <!-- <h4 class="title is-5 mt-4">Gym Hall Episodes</h4> -->
@@ -656,7 +670,7 @@
         </div>
 
         <div id="scene-skate" class="tab-content scene-content has-text-centered">
-          <video controls width="100%" class="scene-video">
+          <video controls muted playsinline width="100%" class="scene-video">
             <source src="./assets/explorer_scene/office.mp4" type="video/mp4">
           </video>
           <!-- <h4 class="title is-5 mt-4">Office Episodes</h4> -->
@@ -681,7 +695,7 @@
         </div>
 
         <div id="scene-debris" class="tab-content scene-content has-text-centered">
-          <video controls width="100%" class="scene-video">
+          <video controls muted playsinline width="100%" class="scene-video">
             <source src="./assets/explorer_scene/debris_field.mp4" type="video/mp4">
           </video>
           <!-- <h4 class="title is-5 mt-4">Debris Field Episodes</h4> -->
@@ -767,19 +781,19 @@
       </div>
 
       <div id="modality-video-container" class="container">
-        <div id="video-all" class="modality-video-content"><video controls width="100%">
+        <div id="video-all" class="modality-video-content"><video controls muted playsinline width="100%">
             <source src="./assets/explorer_modalities/all.mp4" type="video/mp4">
           </video></div>
-        <div id="video-ego" class="modality-video-content" style="display: none;"><video controls width="100%">
+        <div id="video-ego" class="modality-video-content" style="display: none;"><video controls muted playsinline width="100%">
             <source src="./assets/explorer_modalities/ego.mp4" type="video/mp4">
           </video></div>
-        <div id="video-exo" class="modality-video-content" style="display: none;"><video controls width="100%">
+        <div id="video-exo" class="modality-video-content" style="display: none;"><video controls muted playsinline width="100%">
             <source src="./assets/explorer_modalities/exo.mp4" type="video/mp4">
           </video></div>
-        <div id="video-fixed" class="modality-video-content" style="display: none;"><video controls width="100%">
+        <div id="video-fixed" class="modality-video-content" style="display: none;"><video controls muted playsinline width="100%">
             <source src="./assets/explorer_modalities/fixed.mp4" type="video/mp4">
           </video></div>
-        <div id="video-slam" class="modality-video-content" style="display: none;"><video controls width="100%">
+        <div id="video-slam" class="modality-video-content" style="display: none;"><video controls muted playsinline width="100%">
             <source src="./assets/explorer_modalities/slam.mp4" type="video/mp4">
           </video></div>
         <div id="video-scene" class="modality-video-content" style="display: none;">
@@ -864,12 +878,12 @@
         </div>
         <div class="columns">
           <div class="column">
-            <video controls width="100%">
+            <video controls muted playsinline width="100%">
               <source src="./assets/human2robot/human.mp4" type="video/mp4">
             </video>
           </div>
           <div class="column">
-            <video controls width="100%">
+            <video controls muted playsinline width="100%">
               <source src="./assets/human2robot/robot.mp4" type="video/mp4">
             </video>
           </div>
@@ -902,30 +916,35 @@
           deploy them on a Unitree G1 humanoid.</p>
         <div class="columns">
           <div class="column">
-            <video controls width="100%">
-              <source src="./assets/application/whole_body_control_1.mp4" type="video/mp4">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/beam_human.mp4" type="video/mp4">
             </video>
           </div>
           <div class="column">
-            <video controls width="100%">
-              <source src="./assets/application/whole_body_control_2.mp4" type="video/mp4">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/beam_g1.mp4" type="video/mp4">
             </video>
           </div>
         </div>
       </div>
 
       <div id="app-bench" class="tab-content application-content has-text-centered">
-        <p class="mb-4">We benchmark reconstruction accuracy against marker-based motion capture ground truth
-          across diverse terrain sequences.</p>
+        <p class="mb-4">We use our dataset to benchmark state-of-the-art reconstruction and estimation pipelines.</p>
+
+      <figure class="image has-text-centered">
+        <img src="./assets/application/benchmark_legend.png" alt="Capture system overview"
+          style="max-width: 800px; width: 50%; margin: 5px auto; border-radius: 8px;">
+      </figure>
+
         <div class="columns">
           <div class="column">
-            <video controls width="100%">
-              <source src="./assets/application/benchmark_1.mp4" type="video/mp4">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/benchmark_human3r.mp4" type="video/mp4">
             </video>
           </div>
           <div class="column">
-            <video controls width="100%">
-              <source src="./assets/application/benchmark_2.mp4" type="video/mp4">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/benchmark_josh.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -942,12 +961,12 @@
       </div>
       <div class="columns">
         <div class="column">
-          <video controls width="100%">
+          <video controls muted playsinline width="100%">
             <source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+1" type="video/mp4">
           </video>
         </div>
         <div class="column">
-          <video controls width="100%">
+          <video controls muted playsinline width="100%">
             <source src="https://via.placeholder.com/800x450.mp4?text=Limitation+Video+2" type="video/mp4">
           </video>
         </div>
