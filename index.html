@@ -231,6 +231,13 @@
       }, { threshold: 0.5 });
 
       document.querySelectorAll('video').forEach(video => videoObserver.observe(video));
+
+      // --- Prevent unmuting videos that are meant to stay muted (native controls still allow play/pause/seek) ---
+      document.querySelectorAll('video[muted]').forEach(video => {
+        video.addEventListener('volumechange', () => {
+          if (!video.muted) video.muted = true;
+        });
+      });
     });
   </script>
 </head>
@@ -949,6 +956,30 @@
           <div class="column">
             <video controls muted playsinline width="100%">
               <source src="./assets/application/beam_g1.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/exomc-parkour_xhall_02-2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/parkour_deploy.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/narrow_path_human_trimmed.MP4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls muted playsinline width="100%">
+              <source src="./assets/application/narrow_path_02.MP4" type="video/mp4">
             </video>
           </div>
         </div>
